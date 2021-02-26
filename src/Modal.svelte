@@ -6,7 +6,18 @@
 </div>
 
 <div class="modal">
-    <slot/>
+    <header>
+        <slot name="header"/>
+    </header>
+
+    <div class="content">
+        <slot/>
+    </div>
+    <footer class="footer">
+        <slot>
+            <button>Close</button>
+        </slot>
+    </footer>
 </div>
 
 <style>
@@ -34,4 +45,7 @@
     overflow: scroll;
 }
 
+header {
+    border-bottom: 1px solid #ccc;
+}
 </style>
