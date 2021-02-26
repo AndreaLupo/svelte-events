@@ -11,6 +11,7 @@
     ];
 
 	let showModal = false;
+	let closable = false;
 
 	function addToCard(event) {
 		console.log(event.detail);
@@ -31,9 +32,13 @@
 <button on:click="{() => showModal = true}">Show modal</button>
 
 {#if showModal}
-	<Modal on:close="{()=> showModal = false}" on:cancel="{()=> showModal = false}">
+	<Modal on:close="{()=> showModal = false}" on:cancel="{()=> showModal = false}"
+		let:didAgree={closable}>
 		<h1 slot="header">Hello!</h1>	
 		<p>This works!</p>
-		<button slot="footer" on:click="{()=> showModal = false}">Confirm</button>
+		<button slot="footer" on:click="{()=> showModal = false}"
+			disabled={!closable}
+			>Confirm
+		</button>
 	</Modal>
 {/if}
